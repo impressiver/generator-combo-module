@@ -34,7 +34,8 @@
     "karma": "~0.10.2",
     "load-grunt-tasks": "~0.1.0",
     "time-grunt": "~0.1.1",
-    "moment": "~2.0.0"
+    "moment": "~2.0.0",
+    "amdefine": ">=0.0.8"
   },
   "scripts": {
     "test": "grunt test"
