@@ -4,8 +4,13 @@
   "description": "A Yeoman generator for AMD modules. Generates a skeleton project structure for developing and publishing Javascript AMD modules, for both client (Require.js) and server (Node.js)",
   "keywords": [
     "yeoman-generator",
-    "AMD",
-    "RequireJS"
+    "amd",
+    "requirejs",
+    "require",
+    "bower",
+    "grunt",
+    "karma",
+    "buildtool"
   ],
   "homepage": "https://github.com/impressiver/generator-amd-module",
   "bugs": "https://github.com/impressiver/generator-amd-module/issues",
