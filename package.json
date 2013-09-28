@@ -1,0 +1,43 @@
+{
+  "name": "generator-amd-module",
+  "version": "0.0.0",
+  "description": "A Yeoman generator for AMD modules. Generates a skeleton project structure for developing and publishing Javascript AMD modules, for both client (Require.js) and server (Node.js)",
+  "keywords": [
+    "yeoman-generator",
+    "AMD",
+    "RequireJS"
+  ],
+  "homepage": "https://github.com/impressiver/generator-amd-module",
+  "bugs": "https://github.com/impressiver/generator-amd-module/issues",
+  "author": {
+    "name": "Ian White",
+    "email": "ian@impressiver.com",
+    "url": "https://github.com/impressiver"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/impressiver/generator-amd-module.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.13.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0-rc.1"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
