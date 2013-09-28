@@ -94,7 +94,8 @@ AmdModuleGenerator.prototype.askFor = function askFor() {
   this.prompt(prompts, function (props) {
     this.packageName  = props.packageName;
     this.moduleName   = props.moduleName;
-    this.distName     = this.moduleName.toLowerCase();
+    this.distName     = props.moduleName.toLowerCase();
+    this.description  = props.description;
 
     cb();
   }.bind(this));
