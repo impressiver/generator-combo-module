@@ -1,6 +1,31 @@
 # generator-amd-module [![Build Status](https://secure.travis-ci.org/impressiver/generator-amd-module.png?branch=master)](https://travis-ci.org/impressiver/generator-amd-module)
 
-A generator for [Yeoman](http://yeoman.io).
+A generator for [Yeoman](http://yeoman.io) based on the [Grunt-AMD boilerplate](https://github.com/impressiver/Grunt-AMD-Boilerplate).
+
+###
+Skeleton project structure for developing and publishing JavaScript
+[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, for both client
+([Require.js](http://requirejs.org/)) and server ([Node.js](http://nodejs.org/)).
+###
+
+The purpose of this generator is *not* to render a complete web application, but
+rather the modular components that you might use in various web applications. In
+other words, this template makes it easy to build [npm](https://npmjs.org/)
+modules.
+
+It is configured so that you can develop components with a structured, organized
+codebase and then compile everything down to a single file when you are ready to
+publish to the npm registry (or elsewhere).
+
+Bits and Pieces:
+  -  [npm](https://npmjs.org/):                     Well... it's a Node.js package manager
+  -  [Yeoman](http://yeoman.io):                    Tools that make generating things like this 
+  -  [Grunt](http://gruntjs.com/):                  Automates common tasks: test, build, clean
+  -  [Bower](http://bower.io/):                     Package manager for browser dependencies
+  -  [Jasmine](http://pivotal.github.io/jasmine/):  Behavior-driven test framework
+  -  [Karma](http://karma-runner.github.io/):       Javascript test runner
+  -  [PhantomJS](http://phantomjs.org/):            Headless browser for running tests
+  -  [RequireJS](http://requirejs.org/):            AMD loader optimized for the browser
 
 
 ## Getting Started
