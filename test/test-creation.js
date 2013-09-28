@@ -29,7 +29,7 @@ describe('amd-module generator', function () {
     helpers.mockPrompt(this.app, {
       'packageName': 'Radish-Patch',
       'moduleName': 'RadishPatch',
-      'description'
+      'description': 'A radish generating AMD module.'
     });
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {
