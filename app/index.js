@@ -103,7 +103,7 @@ AmdModuleGenerator.prototype.askFor = function askFor() {
 
 AmdModuleGenerator.prototype.app = function app() {
   this.mkdir('src');
-  this.template('_main.js', 'src/main.js')
+  // this.template('_requirejs-main.js', 'src/requirejs-main.js')
   this.template('_module.js', 'src/' + this.distName + '.js');
 
   this.mkdir('test');
@@ -117,7 +117,7 @@ AmdModuleGenerator.prototype.app = function app() {
 };
 
 AmdModuleGenerator.prototype.projectfiles = function projectfiles() {
-  this.copy('Gruntfile.js', 'Gruntfile.js');
+  this.template('Gruntfile.js', 'Gruntfile.js');
   this.copy('karma.conf.js', 'karma.conf.js');
 
   this.copy('editorconfig', '.editorconfig');

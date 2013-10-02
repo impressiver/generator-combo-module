@@ -1,70 +1,68 @@
-# generator-amd-module [![Build Status](https://secure.travis-ci.org/impressiver/generator-amd-module.png?branch=master)](https://travis-ci.org/impressiver/generator-amd-module)
+# generator-flex-module [![Build Status](https://secure.travis-ci.org/impressiver/generator-flex-module.png?branch=master)](https://travis-ci.org/impressiver/generator-flex-module)
 
-A generator for [Yeoman](http://yeoman.io) based on the [Grunt-AMD boilerplate](https://github.com/impressiver/Grunt-AMD-Boilerplate).
+A generator for [Yeoman](http://yeoman.io) that lets you write JavaScript modules like any other [Node.js](http://nodejs.org/) [module](http://nodejs.org/api/modules.html), [transpile](http://en.wikipedia.org/wiki/Source-to-source_compiler) into every permutation you (or anyone else) might need.
 
-###
-Skeleton project structure for developing and publishing JavaScript
-[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, for both client
-([Require.js](http://requirejs.org/)) and server ([Node.js](http://nodejs.org/)).
-###
+# Write modules in Node.js, get them in the browser for free #
 
-The purpose of this generator is *not* to render a complete web application, but
-rather the modular components that you might use in various web applications. In
-other words, this template makes it easy to build [npm](https://npmjs.org/)
-modules.
+The purpose of this generator is *not* to end up with a complete web application, but rather the modular components that you might use in various parts and stages of your web application.
 
-It is configured so that you can develop components with a structured, organized
-codebase and then compile everything down to a single file when you are ready to
-publish to the npm registry (or elsewhere).
+**WORK IN PROGRESS:** *I'm still experimenting a bit and things might change. I welcome feedback and suggestions; I'd like this to be genuinely useful in the end.*
+
+A complete skeleton for developing in Node.js, testing with [Karma](http://karma-runner.github.io/), optimizing, versioning, and transpiling to any of the internet's favorite module formats. You end up with a publishable [npm](https://npmjs.org/) module for serverside use, [AMD](http://en.wikipedia.org/wiki/Asynchronous_module_definition) ([RequireJS](http://requirejs.org/docs/whyamd.html)), [CommonJS](http://en.wikipedia.org/wiki/CommonJS) ([Browserify](http://browserify.org/)), [UMD](https://github.com/umdjs/umd), and/or a standalone script to use in the browser.
+
+The transpile process is a source-to-source translation, generating a separate directory for each module flavor. This intermediary step is useful not only for debugging in the browser, but also for reducing bloat by defering to the web application for bundling/minifying. This way only the parts needed by the app will be bundled into the final build.
+
+Of course, you also get a standalone optimized build of the module too.
 
 Bits and Pieces:
-  -  [npm](https://npmjs.org/):                     Well... it's a Node.js package manager
-  -  [Yeoman](http://yeoman.io):                    Tools that make generating things like this 
-  -  [Grunt](http://gruntjs.com/):                  Automates common tasks: test, build, clean
-  -  [Bower](http://bower.io/):                     Package manager for browser dependencies
-  -  [Jasmine](http://pivotal.github.io/jasmine/):  Behavior-driven test framework
-  -  [Karma](http://karma-runner.github.io/):       Javascript test runner
-  -  [PhantomJS](http://phantomjs.org/):            Headless browser for running tests
-  -  [RequireJS](http://requirejs.org/):            AMD loader optimized for the browser
+  -  [npm](https://npmjs.org/):                     Package manager/registry
+  -  [Bower](http://bower.io/):                     Browser package manger/registry
+  -  [Yeoman](http://yeoman.io):                    Makes web dev easy
+  -  [Grunt](http://gruntjs.com/):                  Build/task runner
+  -  [Jasmine](http://pivotal.github.io/jasmine/):  Behavior-driven (BDD) tests
+  -  [Karma](http://karma-runner.github.io/):       Test runner
+  -  [PhantomJS](http://phantomjs.org/):            Headless browser (for test)
+  -  [Browserify](http://requirejs.org/):           CJS optimizer/loader
+  -  [RequireJS](http://requirejs.org/):            AMD optimizer/loader
+  -  [uRequire](http://urequire.org/):              Transpiler/converter
 
 
 ## Getting Started
 
-### What is Yeoman?
+### Requirements
+  -  npm (comes with Node.js)
 
-Trick question. It's not a thing. It's this guy:
 
-![](http://i.imgur.com/JHaAlBJ.png)
+### Setup Yeoman
 
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
+Make sure you have Yeoman installed:
 ```
 $ npm install -g yo
+...
 ```
 
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-amd-module from npm, run:
-
+Install this generator (like a plug-in for Yeoman) from npm:
 ```
-$ npm install -g generator-amd-module
+$ npm install -g generator-flex-module
+```
+
+
+### Generate a new flex-module
+
+Create a directory for the project, and cd into it:
+```
+$ mkdir ~/dev/fancy-new-module && cd $_
 ```
 
 Finally, initiate the generator:
-
 ```
-$ yo amd-module
+$ yo flex-module
 ```
 
-### Getting To Know Yeoman
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+### Generator Options
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+The generator will prompt you for several config settings before generating the project files. Where possible, all settings are saved in the project's `package.json` under the `config` hash, and any time an npm lifecycle script or Grunt task is run it will look there first for config values. So you'll be able to make changes to the config if you change your mind later.
 
 
 ## License

@@ -1,22 +1,23 @@
-if (typeof define !== 'function') {
-  /*global define:true, require:false, module:false */
-  /*jshint latedef:false */
-  var define = require('amdefine')(module);
+console.log('Loading <%= moduleName %>...');
+
+function <%= moduleName %> () {
+  var instance;
+  if( !(this instanceof <%= moduleName %>) ){
+    if( !instance ) {
+      instance = new <%= moduleName %>.apply( this, arguments );
+    }
+    
+    return instance;
+  }
 }
 
-define(['console'],
-function (console) {
-  'use strict';
-
-  console.log('Loading <%= moduleName %>...');
-
-  var <%= moduleName %> = Object.create( {}, {
-    hola: {
-      value: function () {
-        return 'back atcha.';
-      }
-    }
-  });
-
-  return <%= moduleName %>;
+<%= moduleName %>.prototype = Object.create( <%= moduleName %>.prototype, {
+  hola: {
+    value: function () {
+      return 'back atcha.';
+    },
+    enumerable: true
+  }
 });
+
+exports = module.exports = <%= moduleName %>;

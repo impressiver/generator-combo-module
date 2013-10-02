@@ -28,16 +28,21 @@ module.exports = function(grunt) {
     // Metadata.
     pkg: pkg,
     config: config,
-    banner: '/*! <%%= config.moduleName %> - v<%%= pkg.version %> - ' +
-      '<%%= grunt.template.today("yyyy-mm-dd") %>\n\n' +
+    banner: '/*! <%%= config.moduleName %> - v<%%= pkg.version %> ' +
+      '(<%%= grunt.template.today("yyyy-mm-dd") %>)\n\n' +
       '<%%= pkg.name %>\n' + (new Array(pkg.name.length + 1).join('=')) + '\n' +
       '<%%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%%= grunt.template.today("yyyy") %> <%%= pkg.author.name %>;' +
-      ' Licensed <%%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+      'Copyright <%%= grunt.template.today("yyyy") %> <%%= pkg.author.name %> <<%%= pkg.author.email %>>;\n' +
+      'Licensed <%%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+    bannerMin: '/*! <%%= config.moduleName %> - v<%%= pkg.version %> ' +
+      '(<%%= grunt.template.today("yyyy-mm-dd") %>), ' +
+      '<%%= pkg.author.name %> <<%%= pkg.author.email %>> ' +
+      '<%%= pkg.homepage ? "* " + pkg.homepage : "" %>; ' +
+      'Licensed <%%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
 
     // Task configuration.
     clean: {
-      files: ['dist']
+      files: ['dist', 'build']
     },
     concat: {
       options: {
@@ -45,7 +50,7 @@ module.exports = function(grunt) {
         stripBanners: false
       },
       dist: {
-        src: ['dist/<%%= config.distName %>.js'],
+        src: ['src/**/*'],
         dest: 'dist/<%%= config.distName %>.js'
       },
     },
@@ -91,15 +96,62 @@ module.exports = function(grunt) {
         }]
       }
     },
-    requirejs: {
-      compile: {
-        options: {
-          name: 'main',
-          mainConfigFile: 'src/main.js',
-          out: 'dist/<%%= config.distName %>.js',
-          optimize: 'none'
-          // generateSourceMaps: true,
-        }
+    // requirejs: {
+    //   build: {
+    //     options: {
+    //       baseUrl: 'src',
+    //       dir: 'build/amd',
+    //       useStrict: true,
+    //       optimize: 'none',
+    //       shim: {
+    //         console: {
+    //           exports: 'console'
+    //         }
+    //       }
+    //     }
+    //   }
+    // },
+    urequire: {
+      umd: {
+        template: 'UMD',
+        dstPath: 'build/umd',
+        resources: [
+          [
+            '!banner:<%%= config.distName %>.js',
+            'concat/add banner to <%%= config.distName %>.js',
+            ['<%%= config.distName %>.js'],
+            function(r) {
+              return [grunt.config.get('banner'), r.converted].join('\n');
+            }
+          ]
+        ]
+      },
+      amd: {
+        template: 'AMD',
+        dstPath: 'build/amd',
+        resources: [
+          [
+            '!banner:<%%= config.distName %>.js',
+            'concat/add banner to <%%= config.distName %>.js',
+            ['<%%= config.distName %>.js'],
+            function(r) {
+              return [grunt.config.get('banner'), r.converted].join('\n');
+            }
+          ]
+        ]
+      },
+      combined: {
+        template: 'combined',
+        path: 'src/',
+        dstPath: 'build/<%%= config.distName %>.combined.js',
+        main: '<%%= config.distName %>'
+      },
+      _defaults: {
+        path: 'src/',
+        scanAllow: true,
+        allNodeRequires: false,
+        noRootExports: false,
+        verbose: true
       }
     },
     connect: {
@@ -109,7 +161,7 @@ module.exports = function(grunt) {
           middleware: function (connect) {
             return [
               connect.static(require('path').resolve('test')),
-              connect.static(require('path').resolve('src'))
+              connect.static(require('path').resolve('build/amd'))
             ];
           }
         }
@@ -119,13 +171,14 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'jshint',
+    'urequire',
     'karma'
   ]);
 
   grunt.registerTask('build', [
     'clean',
+    'urequire',
     'copy:dist',
-    'requirejs',
     'concat',
     'uglify',
     'copy:main'

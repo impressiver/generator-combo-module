@@ -9,7 +9,7 @@ for (var file in window.__karma__.files) {
 
 requirejs.config({
     // Karma serves files from '/base'
-    baseUrl: '/base/src',
+    baseUrl: '/base/build/amd',
 
     paths: {
       'console': '../lib/console-lite'
