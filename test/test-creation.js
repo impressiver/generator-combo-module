@@ -5,14 +5,14 @@ var path    = require('path');
 var helpers = require('yeoman-generator').test;
 
 
-describe('flex-module generator', function () {
+describe('combo-module generator', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         return done(err);
       }
 
-      this.app = helpers.createGenerator('flex-module:app', [
+      this.app = helpers.createGenerator('combo-module:app', [
         '../../app'
       ]);
       done();
@@ -29,7 +29,7 @@ describe('flex-module generator', function () {
     helpers.mockPrompt(this.app, {
       'packageName': 'Radish-Patch',
       'moduleName': 'RadishPatch',
-      'description': 'A radish generating AMD module.'
+      'description': 'A radish generating combo module.'
     });
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {

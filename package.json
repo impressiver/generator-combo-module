@@ -1,19 +1,29 @@
 {
-  "name": "generator-flex-module",
-  "version": "0.0.0",
-  "description": "A Yeoman generator for AMD modules. Generates a skeleton project structure for developing and publishing Javascript AMD modules, for both client (Require.js) and server (Node.js)",
+  "name": "generator-combo-module",
+  "version": "0.1.0",
+  "description": "A generator for Yeoman that lets you write JavaScript modules in Node.js, and transpile them to work anywhere (both server and browser).",
   "keywords": [
     "yeoman-generator",
+    "module",
+    "package",
+    "npm",
     "amd",
+    "umd",
+    "cjs",
+    "commonjs",
+    "global",
+    "combined",
+    "transpile",
+    "urequire",
+    "browserify",
     "requirejs",
     "require",
     "bower",
     "grunt",
-    "karma",
     "buildtool"
   ],
-  "homepage": "https://github.com/impressiver/generator-flex-module",
-  "bugs": "https://github.com/impressiver/generator-flex-module/issues",
+  "homepage": "https://github.com/impressiver/generator-combo-module",
+  "bugs": "https://github.com/impressiver/generator-combo-module/issues",
   "author": {
     "name": "Ian White",
     "email": "ian@impressiver.com",
@@ -22,7 +32,7 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/impressiver/generator-flex-module.git"
+    "url": "git://github.com/impressiver/generator-combo-module.git"
   },
   "scripts": {
     "test": "mocha"
