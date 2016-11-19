@@ -18,7 +18,7 @@ Bits and Pieces:
   -  [Bower](http://bower.io/):                     Browser package manger/registry
   -  [Yeoman](http://yeoman.io):                    Makes web dev easy
   -  [Grunt](http://gruntjs.com/):                  Build/task runner
-  -  [Jasmine](http://pivotal.github.io/jasmine/):  Behavior-driven (BDD) tests
+  -  [Jasmine](https://jasmine.github.io/):         Behavior-driven (BDD) tests
   -  [Karma](http://karma-runner.github.io/):       Test runner
   -  [PhantomJS](http://phantomjs.org/):            Headless browser (for test)
   -  [Browserify](http://requirejs.org/):           CJS optimizer/loader
